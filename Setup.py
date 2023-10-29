@@ -15,7 +15,7 @@ def getRequirements(path:str)->List[str]:
 
 setup(
     name="sjProject",
-    version="0.0.1",
+    version="0.0.2",
     author="Saurabh",
     author_email="jyalasaurabh.work@gmail.com",
     packages=find_packages([]),
