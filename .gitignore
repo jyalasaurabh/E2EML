@@ -138,5 +138,5 @@ dmypy.json
 cython_debug/
 
 
-# Artifacts csv files
-artifacts/*.csv
+# Artifacts
+artifacts
