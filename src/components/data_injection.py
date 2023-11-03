@@ -2,6 +2,8 @@ import os
 import sys
 from src.logger import logging
 from src.exception import CustomException
+from src.components.data_transform import DataTranform, DataTransformConfig
+
 
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -22,7 +24,7 @@ class DataInjection:
     def initiate_data_injection(self):
         logging.info("Entered data injection method")
         try:
-            df = pd.read_csv("notebook\data\stud.csv")
+            df = pd.read_csv("notebook/data/stud.csv")
             logging.info("Data Read successfull/ Read dataset as dataframe")
             os.makedirs(os.path.dirname(
                 self.injection_config.train_data_path), exist_ok=True)
@@ -46,4 +48,6 @@ class DataInjection:
 
 if __name__ == "__main__":
     obj = DataInjection()
-    obj.initiate_data_injection()
+    train_path, test_path = obj.initiate_data_injection()
+    data_transform = DataTranform()
+    data_transform.initiate_data_transform(train_path, test_path)

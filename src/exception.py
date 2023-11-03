@@ -15,14 +15,3 @@ class CustomException(Exception):
     def __str__(self) -> str:
         return self.error_message
     
-
-
-def divideByZeroException():
-    try:
-        a=1/0
-    except Exception as e:
-        logging.info("Divide by Zero Execption")
-        raise CustomException(e,sys)
-    
-# if __name__=="__main__":
-#     divideByZeroException()

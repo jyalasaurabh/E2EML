@@ -1,12 +1,15 @@
 # Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+This is a demo project for learning and deploying machine learning. 
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+# Basic Commands 
+
+```powershell
+> conda create -p venv python==3.12 -y # creates a enivornment with python version 3.12
+> pip install -r requirements.txt # install dependenices and create packages
+> conda activate venv/
+# in case above command not working
+> conda init # initialize conda
+```
 
 # Build and Test
 TODO: Describe and show how to build your code and run the tests. 
