@@ -1,6 +1,6 @@
 import os
 import sys
-from src.logger import logging
+from src.logger import info_logger
 from src.exception import CustomException
 from src.components.data_transform import DataTranform, DataTransformConfig
 
@@ -22,15 +22,15 @@ class DataInjection:
         self.injection_config = DataInjectionConfig()
 
     def initiate_data_injection(self):
-        logging.info("Entered data injection method")
+        info_logger.info("Entered data injection method")
         try:
             df = pd.read_csv("notebook/data/stud.csv")
-            logging.info("Data Read successfull/ Read dataset as dataframe")
+            info_logger.info("Data Read successfull/ Read dataset as dataframe")
             os.makedirs(os.path.dirname(
                 self.injection_config.train_data_path), exist_ok=True)
             df.to_csv(self.injection_config.raw_data_path,
                       index=False, header=True)
-            logging.info("Train test split initiated")
+            info_logger.info("Train test split initiated")
             train_set, test_set = train_test_split(
                 df, test_size=0.2, random_state=42)
 
@@ -38,7 +38,7 @@ class DataInjection:
                              index=False, header=True)
             test_set.to_csv(self.injection_config.test_data_path,
                             index=False, header=True)
-            logging.info("Train test split completed")
+            info_logger.info("Train test split completed")
 
             return (self.injection_config.train_data_path,
                     self.injection_config.test_data_path)

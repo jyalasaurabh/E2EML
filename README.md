@@ -4,7 +4,7 @@ This is a demo project for learning and deploying machine learning.
 # Basic Commands 
 
 ```powershell
-> conda create -p venv python==3.12 -y # creates a enivornment with python version 3.12
+> conda create -p venv python==3.8 -y # creates a enivornment with python version 3.12
 > pip install -r requirements.txt # install dependenices and create packages
 > conda activate venv/
 # in case above command not working

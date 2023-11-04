@@ -10,7 +10,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 from src.exception import CustomException
-from src.logger import logging
+from src.logger import info_logger
 from src.utils import save_obj
 
 
@@ -29,16 +29,16 @@ class DataTranform:
             categorical_columns = ["gender", "race_ethnicity",
                                    "parental_level_of_education", "lunch", "test_preparation_course"]
             num_pipeline = Pipeline(
-                steps=[("imputer", SimpleImputer(stratergy="median")),
-                       ("scalar", StandardScaler())]
+                steps=[("imputer", SimpleImputer(strategy="median")),
+                       ("scalar", StandardScaler(with_mean=False))]
             )
             cat_pipeline = Pipeline(
-                steps=[("imputer", SimpleImputer(strategy="most_frequent"))
-                       ("one_hot_encoder", OneHotEncoder())
-                       ("scalar", StandardScaler())
+                steps=[("imputer", SimpleImputer(strategy="most_frequent")),
+                       ("one_hot_encoder", OneHotEncoder()),
+                       ("scalar", StandardScaler(with_mean=False))
                        ]
             )
-            logging.info("Categorical/numerical Encoding Completed")
+            info_logger.info("Categorical/numerical Encoding Completed")
 
             preprocessor = ColumnTransformer([
                 ("num_pipeline", num_pipeline, numerical_columns),
@@ -55,10 +55,10 @@ class DataTranform:
             train_df = pd.read_csv(train_path)
             test_df = pd.read_csv(test_path)
 
-            logging.info("reading of train test data completed")
+            info_logger.info("reading of train test data completed")
 
             preprocessor_obj = self.get_data_transformer()
-            logging.info("pipeline preprocessor completed")
+            info_logger.info("pipeline preprocessor completed")
 
             target_column_name = "math_score"
             numerical_columns = ["writing_score", "reading_score"]
@@ -87,11 +87,11 @@ class DataTranform:
 
             )
 
-            return {
+            return (
                 train_arr,
                 test_arr,
                 self.data_transform_config.preprocessor_obj_file_path
-            }
+            )
 
         except Exception as e:
             raise CustomException(e, sys)
