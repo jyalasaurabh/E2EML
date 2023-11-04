@@ -141,3 +141,4 @@ cython_debug/
 # Artifacts
 artifacts
 .vscode/launch.json
+catboost_info/
