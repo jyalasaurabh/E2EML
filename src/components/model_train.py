@@ -16,7 +16,7 @@ from xgboost import XGBRegressor
 
 @dataclass
 class ModelTrainConfig:
-    train_model_file_path = os.path.join("artifacts", "mode.pkl")
+    train_model_file_path = os.path.join("artifacts", "model.pkl")
 
 
 class ModelTrainer:
