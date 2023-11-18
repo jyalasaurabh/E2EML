@@ -14,6 +14,9 @@ This is a demo project for learning and deploying machine learning.
 > conda init # initialize conda
 
 > python app.py # to run web application
+
+>git remote set-url origin https://github.com/jyalasaurabh/E2EML.git #change to github
+>git remote set-url originhttps://dev.azure.com/StudioOrg/TestProject/_git/E2E_ML #change to devops
 ```
 
 # Build and Test
